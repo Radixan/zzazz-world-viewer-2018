@@ -1171,7 +1171,10 @@ function loading_render(t) {
     if(selection[1]) selection[1].show_properties(selection[0], object_container);
     else object_container.parentNode.parentNode.classList.add('hidden');
   });
-  screen.canvas.oncontextmenu = function() {return false;};
+  screen.canvas.oncontextmenu = function(e) {
+    e.preventDefault();
+    return false;
+  };
   screen.canvas.addEventListener('mouseup', _stop_drag);
   screen.canvas.addEventListener('mouseout', _stop_drag);
   screen.canvas.addEventListener('mousemove', function(e) {
