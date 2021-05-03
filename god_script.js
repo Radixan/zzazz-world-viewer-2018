@@ -264,7 +264,7 @@ class ZZAZZText {
       return console.log("String at " + ptr + " from " + map.name + " (" + hex_format(map.id, 4) + ") is probably invalid!");
     
     // Basic textbox
-    if(map.data[++it] == 0xC3 && map.data[it + 1] == 0x4E || map.data[it + 2] == 0xDC) //jp EnhancedTextOnly
+    if(map.data[++it] == 0xC3 && map.data[it + 1] == 0x4E && map.data[it + 2] == 0xDC) //jp EnhancedTextOnly
       return this.parse_text(map, it + 2);
     
     this.script = new ZZAZZScript(map, it);
@@ -1233,6 +1233,7 @@ function loading_render(t) {
 document.addEventListener("DOMContentLoaded", function() {
   screen = document.getElementById('screen').getContext("2d");
   main = screen.canvas.parentNode;
+  sidebar = document.getElementById('sidebar');
 
   properties_container = document.getElementById('properties_container');
   object_container = document.getElementById('object_container');
