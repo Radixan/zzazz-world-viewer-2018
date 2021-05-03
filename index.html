@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="const.js"></script>
+    <script src="asm.js"></script>
+    <script src="god_script.js"></script>
+  </head>
+    <canvas id="screen" class="absolute" style="user-select: none;"></canvas>
+    <div id="sidebar" class="absolute hidden">
+      <div id="hidebutton" onclick="this.parentNode.classList[this.parentNode.classList.contains('open') ? 'remove' : 'add']('open');">
+        <div id="hidesymbol"> &#708; </div>
+      </div><div id="sidebarcontent">
+        <div class="tab flex10 locked">
+          <div class="tabbutton open" onclick="toggle_open(this);"> Display <span class="tabsymbol"></span></div>
+          <div class="tabcontainer"><div class="paddingcontainer">
+            <label><input type="checkbox" id="obje"  onclick="toggle_flag(this, 0x01, ['obje2']);" checked> Show objects          </label></br>
+            <label><input type="checkbox" id="obje2" onclick="toggle_flag(this, 0x10);"                   > Highlight objects     </label></br>
+            <label><input type="checkbox" id="bord"  onclick="toggle_flag(this, 0x02);"            checked> Show borders          </label></br>
+            <label><input type="checkbox" id="sign"  onclick="toggle_flag(this, 0x04);"            checked> Show signs            </label></br>
+            <label><input type="checkbox" id="warp"  onclick="toggle_flag(this, 0x08, ['warp2']);" checked> Show warps            </label></br>
+            <label><input type="checkbox" id="warp2" onclick="toggle_flag(this, 0x20);"                   > Show warps destination</label>
+          </div></div>
+        </div>
+        <div class="tab hidden">
+          <div class="tabbutton open" onclick="toggle_open(this);"><div class="resize_handler"></div> Properties <span class="tabsymbol"></span></div>
+          <div class="tabcontainer"><table class="paddingcontainer properties_table" id="properties_container">
+          </table></div>
+        </div>
+        <div class="tab hidden">
+          <div class="tabbutton open" onclick="toggle_open(this);"><div class="resize_handler"></div> Object <span class="tabsymbol"></span></div>
+          <div class="tabcontainer"><table class="paddingcontainer properties_table" id="object_container">
+          </table></div>
+        </div>
+        <div class="tab locked" style="height: 300px; flex: 0 0 auto;">
+          <div class="tabbutton open" onclick="toggle_open(this);"><div class="resize_handler locked"></div> Data <span class="tabsymbol"></span></div>
+          <div class="tabcontainer"><div class="paddingcontainer" id="data_container">
+          There is no map selected...
+          </div></div>
+        </div>
+      </div>
+    </div>
+</html>
